@@ -31,7 +31,8 @@
 | Reiniciar FreePBX | `fwconsole restart` |
 | Estado del firewall | `fwconsole firewall list trusted` |
 | IP bloqueadas por intentos | `fail2ban-client status` |
-| Respaldo manual | Admin → Backup & Restore → ejecutar el respaldo "HZ-diario" |
+| Respaldo diario automático | Base de datos en `/root/respaldos/asterisk-<día>.sql.gz` a las 23:00 (`/etc/cron.d/hz-respaldo`); incluye contraseñas |
+| Respaldo para anexos (sin contraseñas) | `bash hz-respaldo-anexo.sh` (ver `PENDIENTES-EQUIPO-RED.md`, sección 7) |
 | Pasar a IP de producción | `bash /root/hz-produccion.sh` |
 | Servidor iperf3 para la prueba de QoS | `iperf3 -s` |
 

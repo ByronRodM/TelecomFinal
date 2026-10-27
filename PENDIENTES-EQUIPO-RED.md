@@ -79,6 +79,12 @@ Ya están hechas y con evidencia (capturas 17 a 23): registro, llamada laptop �
 - **E2:** capturas de la controladora (topología, dispositivos, redes, ACL, estadísticas). Revisar el Anexo A.
 - **E3:** troncal sip2sip ya registrada; salida probada con **04444** (eco). Falta probar una llamada entrante desde otra cuenta SIP externa.
 
+## La copia de la VM de Byron
+
+Byron se queda con la VM original apagada. **No debe encenderse mientras el equipo use la copia**, porque las dos tienen la misma identidad en Tailscale y la misma cuenta sip2sip, y se quitarían la conexión una a la otra. Si hace falta encenderla, primero avisar al grupo.
+
+Los teléfonos que Byron configuró (MicroSIP con 2502 y el celular con 2101) apuntan a 192.168.1.180, la IP de su casa. En la red Omada debe cambiar el servidor a **192.168.30.5**; desde fuera puede usar la cuenta 2201 por Tailscale (100.114.1.2), que sigue funcionando con la VM del equipo.
+
 ## Cuándo hay que contactar a Byron
 
 Algunas cuentas están a nombre de Byron y solo él puede hacer estos cambios:
@@ -93,5 +99,13 @@ Algunas cuentas están a nombre de Byron y solo él puede hacer estos cambios:
 
 ## 7. Cierre
 
-- Respaldo final de FreePBX (Admin → Backup & Restore) y de Omada. Quitar contraseñas de los archivos antes de meterlos en el comprimido de anexos.
+### Respaldos
+
+- La VM ya trae respaldos dentro: el completo del 27/10 en `/root/respaldos/` y uno diario automático de la base de datos a las 23:00 (`/etc/cron.d/hz-respaldo`). **Esos incluyen contraseñas** (secretos SIP, PIN de buzón, contraseña de sip2sip), así que no se entregan tal cual.
+- El respaldo para el **anexo** se genera **al final**, cuando ya estén hechas todas las pruebas y cambios, con el script `vm-scripts/hz-respaldo-anexo.sh`, que oculta las contraseñas y verifica que no quede ninguna. Para pasarlo a la VM desde la laptop (PowerShell, estando en la VLAN 10):
+  ```
+  scp C:\ruta\TelecomFinal\vm-scripts\hz-respaldo-anexo.sh hzadmin@192.168.30.5:/tmp/
+  ```
+  y en la VM, como root: `bash /tmp/hz-respaldo-anexo.sh`. Copiar el `.tgz` resultante de vuelta con `scp` y abrirlo para revisar antes de meterlo al comprimido.
+- Exportar también la configuración de la controladora Omada (Settings → Maintenance → Backup) y revisar que no muestre contraseñas de Wi-Fi en texto.
 - Llenar `BITACORA.md` con lo que hizo cada quien.
