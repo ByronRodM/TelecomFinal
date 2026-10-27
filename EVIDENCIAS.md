@@ -4,7 +4,7 @@ Todas las capturas muestran el reloj de Windows (fecha y hora) y ocultan contras
 
 | Archivo | Muestra | Criterio |
 |---|---|---|
-| `capturas/01-debian-instalacion-apt.jpg` | Instalación desatendida de Debian 12 en la VM HZ-PBX | C |
+| `capturas/01-debian-instalacion-apt.jpg` | Instalación desatendida de Debian 12 en la VM HZ-PBX (primer intento; se repitió en versión mínima por el modo de compatibilidad de Windows) | C |
 | `capturas/02-debian-base-guest-additions.jpg` | Consola de la VM: sistema en modo texto (multi-user), Guest Additions y carpeta compartida activas | C |
 | `capturas/03-resumen-pbx-consola.jpg` | Consola: versiones (Debian 12.15, FreePBX 17.0.33.2, Asterisk 22.11.0), 10 extensiones PJSIP, 5 buzones, grupos 2000/2910, cola 2920, servicios 2900/2999, IVR diurno y nocturno, horario, idioma español latinoamericano (es_419), audio directo desactivado y TOS de audio 184 (EF) | C, D, F |
 | `capturas/04-virtualbox-vm-hz-pbx.jpg` | VirtualBox: VM HZ-PBX (Debian 12, 3 GB RAM, 2 CPU, disco 30 GB, adaptador puente + solo-anfitrión, carpeta compartida) | C |

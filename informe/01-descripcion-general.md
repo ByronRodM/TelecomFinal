@@ -17,9 +17,9 @@ Local (stand-alone): la PBX corre en una máquina virtual dentro de la red del c
 | Herramienta | Versión | Uso |
 |---|---|---|
 | Debian GNU/Linux | 12.15 | Sistema operativo de la PBX |
-| FreePBX / Asterisk | (completar con `fwconsole -V` / `asterisk -V`) | Central telefónica |
-| Oracle VirtualBox | 7.x | Virtualización |
-| TP-Link Omada: ER605, SG2210P, EAP610, OC200 | (completar con firmware) | Router, switch, AP y controladora |
+| FreePBX / Asterisk | 17.0.33.2 / 22.11.0 | Central telefónica |
+| Oracle VirtualBox | 7.2 | Virtualización |
+| TP-Link Omada: ER605, SG2210P, EAP610, OC200 | [PENDIENTE: versiones de firmware] | Router, switch, AP y controladora |
 | MicroSIP | 3.21 o superior | Softphone en Windows |
 | Linphone | 5.x | Softphone en celulares |
 | Wireshark | 4.x | Captura y análisis de tráfico |

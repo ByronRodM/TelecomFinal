@@ -6,10 +6,11 @@ La PBX se preparó en la laptop de Byron, que no tiene puerto Ethernet. Este arc
 
 ## 1. Mover la VM a la laptop con Ethernet
 
-1. Byron comparte `HZ-PBX.ova` (la VM exportada) por un canal privado, junto con el archivo de credenciales.
+1. Byron comparte `HZ-PBX.ova` (la VM exportada, 7.3 GB; por ejemplo por Google Drive) por un canal privado, junto con la contraseña de la VM y el archivo de credenciales de las extensiones.
 2. En la laptop destino: VirtualBox → **Archivo → Importar servicio virtualizado** → `HZ-PBX.ova`.
 3. En **Configuración → Red → Adaptador 1**: *Adaptador puente* al **puerto Ethernet** (no al Wi-Fi). El adaptador 2 (solo-anfitrión) se puede dejar; sirve para entrar a la PBX desde esa misma laptop.
-4. Necesita al menos 8 GB de RAM en la laptop. Si va lenta, desactiven *Integridad de memoria* en Seguridad de Windows y reinicien.
+4. Si al encender avisa que no encuentra la carpeta compartida `vmshare`, quítala en *Configuración → Carpetas compartidas*; solo se usó en la preparación.
+5. Necesita al menos 8 GB de RAM en la laptop. Si va lenta, desactiven *Integridad de memoria* en Seguridad de Windows y reinicien.
 
 ## 2. Red en la controladora OC200 (criterio B y extra E2)
 
@@ -77,6 +78,18 @@ Ya están hechas y con evidencia (capturas 17 a 23): registro, llamada laptop �
 - **E1:** ya funciona (capturas 24 a 26). La VM está unida a la red Tailscale personal de Byron con la IP **100.114.1.2**. Para repetir la demo, Byron instala Tailscale en el celular con su cuenta (o invita a otro integrante) y registra en Linphone la cuenta 2201 con dominio 100.114.1.2, usando solo datos móviles.
 - **E2:** capturas de la controladora (topología, dispositivos, redes, ACL, estadísticas). Revisar el Anexo A.
 - **E3:** troncal sip2sip ya registrada; salida probada con **04444** (eco). Falta probar una llamada entrante desde otra cuenta SIP externa.
+
+## Cuándo hay que contactar a Byron
+
+Algunas cuentas están a nombre de Byron y solo él puede hacer estos cambios:
+
+| Situación | Qué necesita hacer Byron |
+|---|---|
+| Probar o demostrar el E1 desde otro celular | Invitar al integrante a su red de Tailscale (o prestar su celular con Tailscale) |
+| La VM aparece desconectada en Tailscale o hay que volver a autorizarla | Aprobarla en su panel de Tailscale |
+| La troncal sip2sip deja de registrarse o hay que cambiar la contraseña | Entrar a su cuenta sip2sip y actualizar el *Secret* en Connectivity → Trunks |
+| Alguien necesita entrar al panel de FreePBX | Crearle su propio usuario en Admin → Administrators (no compartir el de Byron) |
+| Contraseña de la VM (root/hzadmin) o secretos de extensiones | Pedírselos por mensaje privado |
 
 ## 7. Cierre
 

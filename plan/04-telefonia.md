@@ -73,4 +73,4 @@ Fuera de horario (lunes a viernes 07:00 a 19:00, sábado 07:00 a 12:00), la cond
 
 > «Gracias por llamar al Centro Médico Horizonte. En este momento estamos fuera del horario de atención, que es de lunes a viernes de siete de la mañana a siete de la noche y sábados de siete a doce. Si se trata de una emergencia, marque 3. Para dejar un mensaje a Recepción, marque 1.»
 
-Las grabaciones están en `audios/` de la VM (no en el repositorio). Se generaron en español con voz sintética de prueba y deben reemplazarse por la voz de un integrante antes de la demo (Admin → System Recordings).
+Las grabaciones se cargaron en Admin → System Recordings. Se generaron en español con voz sintética para las pruebas y conviene regrabarlas con la voz de un integrante antes de la demo.
