@@ -1,0 +1,10 @@
+# Nunca subir credenciales ni archivos pesados
+CREDENCIALES*.md
+*credenciales*
+*.ova
+*.iso
+*.vdi
+respaldos/
+audios-originales/
+*.tar.gz
+*.tgz
