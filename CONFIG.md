@@ -6,7 +6,7 @@
 |---|---|
 | Encender | VirtualBox → `HZ-PBX` → Iniciar (o *Inicio sin interfaz* para que corra en segundo plano) |
 | Consola | Usuario `root` (contraseña en el archivo de credenciales, fuera del repo) |
-| Panel web durante la preparación | http://192.168.56.10/admin (red solo-anfitrión, desde la laptop que corre la VM) |
+| Panel web durante la preparación | http://192.168.55.10/admin (red solo-anfitrión, desde la laptop que corre la VM) |
 | Panel web en producción | http://192.168.30.5/admin, **solo desde la VLAN 10** |
 | Servidor SIP para softphones | 192.168.30.5, UDP 5060 (en preparación: la IP del adaptador puente, la muestra `ip -br addr`) |
 | SSH | `ssh hzadmin@192.168.30.5` desde la VLAN 10 y luego `su -` |

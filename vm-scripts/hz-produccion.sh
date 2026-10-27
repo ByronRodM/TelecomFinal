@@ -27,7 +27,8 @@ ifdown "$IF1" 2>/dev/null || true; ip addr flush dev "$IF1"; ifup "$IF1"
 fwconsole firewall trust 192.168.10.0/24      # Gestion: administracion
 fwconsole firewall add local 192.168.20.0/24  # Administrativa: solo telefonia
 fwconsole firewall add local 192.168.30.0/24  # Voz: solo telefonia
-fwconsole firewall untrust 192.168.56.0/24 2>/dev/null || true   # red de preparacion
+fwconsole firewall untrust 192.168.55.0/24 2>/dev/null || true   # red de preparacion
+fwconsole firewall untrust 192.168.1.0/24 2>/dev/null || true    # Wi-Fi de la casa usado en la preparacion
 fwconsole reload
 ip -br addr
 echo "Listo. Probar http://192.168.30.5 desde la VLAN 10."

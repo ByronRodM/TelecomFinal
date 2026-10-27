@@ -15,7 +15,7 @@ Si se prefiere no depender de un servicio externo, la alternativa es la VPN Wire
 
 | Prueba | Esperado |
 |---|---|
-| E1-01 | Celular con datos móviles (Wi-Fi apagado) llama a 2101 con audio en ambos sentidos; captura del peer conectado por la IP 100.x |
+| E1-01 | Celular con datos móviles (Wi-Fi apagado) llama a una extensión interna con audio en ambos sentidos | **Correcto**: 2201 por Tailscale (100.103.5.71, ~170 ms) llamó a 2502; capturas 24 a 26 |
 
 ## E2 · SDN con TP-Link Omada (RN-09)
 
@@ -29,12 +29,12 @@ La red completa se administra desde la controladora **OC200**: adopción del ER6
 
 ## E3 · Troncal SIP (RN-10)
 
-Troncal PJSIP registrada en **sip2sip.info** (cuenta gratuita). Ruta de salida: prefijo `0` seguido del usuario SIP o número de destino; ruta de entrada: las llamadas que llegan a la cuenta van a la condición de horario y luego al IVR 2900. Las limitaciones (calidad, que el proveedor gratuito solo comunica con otros usuarios SIP, NAT) se documentan al probar.
+Troncal PJSIP registrada en **sip2sip.info** (cuenta gratuita). Ruta de salida: prefijo `0` seguido del usuario SIP o número de destino; ruta de entrada: las llamadas que llegan a la cuenta van a la condición de horario y luego al IVR 2900. **Limitaciones encontradas:** sip2sip.info no atiende SIP en su dominio (apunta a su web); hubo que declarar el proxy `sip:proxy.sipthor.net;lr`. El servicio gratuito solo conecta con otras direcciones SIP, no con la red telefónica. La ruta de salida usa el patrón `0|X.` (solo dígitos) y no `.`, para evitar marcaciones arbitrarias.
 
 | Prueba | Esperado |
 |---|---|
-| E3-01 | Una extensión marca 0 + destino externo y la llamada sale por la troncal |
-| E3-02 | Una llamada desde fuera a la cuenta sip2sip entra al IVR |
+| E3-01 | Una extensión marca 0 + destino externo y la llamada sale por la troncal | **Correcto**: 04444 (eco de sip2sip) contestó; captura 27 |
+| E3-02 | Una llamada desde fuera a la cuenta sip2sip entra al IVR | Configurada; pendiente de probar desde otra cuenta SIP externa |
 
 ## E4 · Funciones avanzadas
 

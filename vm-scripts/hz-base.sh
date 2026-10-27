@@ -17,7 +17,7 @@ cat >> /etc/network/interfaces <<NET
 # Administracion local desde la laptop (VirtualBox solo-anfitrion)
 allow-hotplug $IF2
 iface $IF2 inet static
-    address 192.168.56.10/24
+    address 192.168.55.10/24
 NET
 ifup "$IF2" || true
 fi

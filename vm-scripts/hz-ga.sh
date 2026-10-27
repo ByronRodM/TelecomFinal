@@ -4,7 +4,13 @@
 # SOLO PARA LA PREPARACION: hz-produccion.sh lo desactiva.
 if ! lsmod | grep -q vboxsf; then
   mkdir -p /media/cdrom; mount /dev/sr0 /media/cdrom 2>/dev/null
-  sh /media/cdrom/VBoxLinuxAdditions.run --nox11
+  if [ -f /media/cdrom/VBoxLinuxAdditions.run ]; then
+    apt-get -y install build-essential dkms linux-headers-amd64 bzip2
+    sh /media/cdrom/VBoxLinuxAdditions.run --nox11
+  else
+    echo "AVISO: inserta el CD de Guest Additions (Devices > Insert Guest Additions CD image) y ejecuta: bash /root/hz-scripts/hz-ga.sh"
+  fi
+  umount /media/cdrom 2>/dev/null
 fi
 usermod -aG vboxsf root 2>/dev/null || true
 cat > /usr/local/sbin/hz-agente <<'AG'

@@ -1,0 +1,18 @@
+#!/bin/bash
+# Arranque rapido: se invoca con "bash /mnt/go" (sin simbolos dificiles de teclear)
+D=$(dirname "$0")
+echo "== Teclado latinoamericano en la consola =="
+sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT="latam"/; s/^XKBVARIANT=.*/XKBVARIANT=""/' /etc/default/keyboard
+setupcon -k --force 2>/dev/null || setupcon 2>/dev/null
+echo "== Copiando scripts =="
+mkdir -p /root/hz-scripts && cp "$D"/*.sh /root/hz-scripts/ && chmod +x /root/hz-scripts/*.sh
+cp /root/hz-scripts/hz-produccion.sh /root/
+echo "== Estado =="
+echo "default target: $(systemctl get-default)"
+echo "gdm3 instalado: $(dpkg -l gdm3 2>/dev/null | grep -c ^ii)"
+echo "log base: $(tail -1 /root/hz-base.log 2>/dev/null)"
+lsmod | grep -q vboxsf && echo "Guest Additions: OK" || echo "Guest Additions: FALTA"
+ls /media
+# Agente (se instala aunque falten las GA; arranca cuando aparezca la carpeta)
+bash /root/hz-scripts/hz-ga.sh
+systemctl is-active hz-agente

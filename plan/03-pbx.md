@@ -8,13 +8,13 @@
 | VM | `HZ-PBX`, 2 vCPU, 3 GB RAM, disco 30 GB |
 | Sistema operativo | Debian GNU/Linux 12.15 "bookworm" amd64 (instalación desatendida) |
 | PBX | FreePBX 17 con Asterisk (versiones exactas en `CONFIG.md`, sección Versiones) |
-| Red de la VM | Adaptador 1 en puente (producción: VLAN 30, IP 192.168.30.5); adaptador 2 solo-anfitrión 192.168.56.10 para administrar desde la laptop durante la preparación |
+| Red de la VM | Adaptador 1 en puente (producción: VLAN 30, IP 192.168.30.5); adaptador 2 solo-anfitrión 192.168.55.10 para administrar desde la laptop durante la preparación |
 
 La instalación se hizo con los scripts de `vm-scripts/`: `hz-base.sh` deja el sistema actualizado con zona horaria de Guatemala y herramientas de diagnóstico (sngrep, tcpdump, iperf3), y `hz-freepbx.sh` ejecuta el instalador oficial de Sangoma para Debian 12.
 
 ## Administración protegida
 
-La interfaz web de FreePBX solo acepta conexiones desde la VLAN 10 (Gestión). Se aplica en dos capas: la ACL 7 del ER605 y el firewall de FreePBX, donde la red 192.168.10.0/24 se declara como **Trusted** y las VLAN 20 y 30 como **Local** (pueden registrar teléfonos, pero no ven la administración). Mientras la VM está en la laptop de preparación, la red solo-anfitrión 192.168.56.0/24 también es Trusted; al pasar a producción se retira.
+La interfaz web de FreePBX solo acepta conexiones desde la VLAN 10 (Gestión). Se aplica en dos capas: la ACL 7 del ER605 y el firewall de FreePBX, donde la red 192.168.10.0/24 se declara como **Trusted** y las VLAN 20 y 30 como **Local** (pueden registrar teléfonos, pero no ven la administración). Mientras la VM está en la laptop de preparación, la red solo-anfitrión 192.168.55.0/24 también es Trusted; al pasar a producción se retira.
 
 ## Códecs y ancho de banda
 

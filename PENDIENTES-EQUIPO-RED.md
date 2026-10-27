@@ -51,6 +51,20 @@ El script pone la interfaz 1 en 192.168.30.5/24, gateway 192.168.30.1, y ajusta 
 
 Cada integrante configura su extensión según `plan/04-telefonia.md` y `GUIA-USUARIO.md`, con servidor `192.168.30.5`. Celulares en `HZ-Voz`, laptops en `HZ-Admin` o cable VLAN 20. Ejecutar las pruebas P-01 a P-23 de `plan/07-pruebas-y-trazabilidad.md` y llenar la columna *Obtenido*. Cada prueba lleva captura con el reloj de Windows visible.
 
+## 4b. Pruebas de telefonía que faltan (necesitan 3 o más teléfonos)
+
+Ya están hechas y con evidencia (capturas 17 a 23): registro, llamada laptop ↔ móvil, espera con música, transferencia ciega, IVR (bienvenida y opción inválida), buzón por ocupado y por no respuesta, consulta del buzón y CDR. Con la red real y más integrantes faltan:
+
+- **P-03** cuatro extensiones registradas a la vez (captura de `pjsip show contacts`).
+- **P-05** llamada entre VLAN distintas (laptop en VLAN 20 y celular en HZ-Voz/VLAN 30).
+- **P-09** segunda llamada entrante mientras hay una activa.
+- **P-11** transferencia atendida (consultar a la extensión destino y luego transferir).
+- **P-17, P-22, P-23** operadora 2000, grupo 2910 y cola 2920 con sus miembros conectados.
+- **P-18** recorrido completo del IVR (opciones 2, 3, 4 y 0) y **P-20** sin respuesta.
+- **P-21** fuera de horario: marcar `*271` y luego 2900; volver a marcar `*271` al terminar.
+- **P-29** bloqueo: registrar un softphone con contraseña errónea varias veces y mostrar la IP bloqueada en *Connectivity → Firewall* o con `fail2ban-client status`.
+- **E3-02** llamada entrante a la cuenta sip2sip desde otra cuenta SIP externa.
+
 ## 5. QoS y mediciones (criterio F)
 
 1. SG2210P: QoS en modo DSCP, EF a la cola más alta.
@@ -60,9 +74,9 @@ Cada integrante configura su extensión según `plan/04-telefonia.md` y `GUIA-US
 
 ## 6. Extras
 
-- **E1:** instalar Tailscale en la VM (`curl -fsSL https://tailscale.com/install.sh | sh && tailscale up`) y en un celular; probar con datos móviles. Ver riesgos en `plan/08-extras.md`.
+- **E1:** ya funciona (capturas 24 a 26). La VM está unida a la red Tailscale personal de Byron con la IP **100.114.1.2**. Para repetir la demo, Byron instala Tailscale en el celular con su cuenta (o invita a otro integrante) y registra en Linphone la cuenta 2201 con dominio 100.114.1.2, usando solo datos móviles.
 - **E2:** capturas de la controladora (topología, dispositivos, redes, ACL, estadísticas). Revisar el Anexo A.
-- **E3:** crear cuenta en sip2sip.info y configurar la troncal (ver `CONFIG.md`).
+- **E3:** troncal sip2sip ya registrada; salida probada con **04444** (eco). Falta probar una llamada entrante desde otra cuenta SIP externa.
 
 ## 7. Cierre
 
