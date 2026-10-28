@@ -68,6 +68,9 @@ Ya están hechas y con evidencia (capturas 17 a 23): registro, llamada laptop �
 
 ## 5. QoS y mediciones (criterio F)
 
+**Seguir la guía detallada `GUIA-QOS.md`** (instalación, comandos exactos, capturas y cómo llenar la tabla). Resumen:
+
+
 1. SG2210P: QoS en modo DSCP, EF a la cola más alta.
 2. ER605: control de ancho de banda (Settings → Transmission → Bandwidth Control) limitando invitados; para la prueba, limitar también el enlace.
 3. Seguir el procedimiento de `plan/05-qos.md` con iperf3 (`C:\Telecom\iperf3.22\iperf3.exe` funciona en cualquier Windows sin instalar; la PBX ya tiene `iperf3`).

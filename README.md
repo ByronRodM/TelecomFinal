@@ -26,6 +26,7 @@ La solución instala una central telefónica IP (FreePBX sobre Asterisk) en una 
 | Archivo | Para qué sirve |
 |---|---|
 | [`PENDIENTES-EQUIPO-RED.md`](PENDIENTES-EQUIPO-RED.md) | **Lo que falta hacer con los equipos Omada**, paso a paso, para quien tenga el hardware |
+| [`GUIA-QOS.md`](GUIA-QOS.md) | Prueba de QoS con y sin priorización, paso a paso |
 | [`CONFIG.md`](CONFIG.md) | Operación de la PBX: encenderla, direcciones, comandos y estado frente a la rúbrica |
 | [`GUIA-USUARIO.md`](GUIA-USUARIO.md) | Guía rápida de una página para el personal del centro médico (anexo) |
 | [`EVIDENCIAS.md`](EVIDENCIAS.md) | Índice de capturas con lo que muestra cada una |
